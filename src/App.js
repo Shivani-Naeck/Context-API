@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Component1, Component6 } from './context';
 import './App.css';
 
+export const NameContext = React.createContext(" ");
+
 function App() {
+
+  
+const [MyName, SetName] = useState("Shiv");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //create the context wrapper to wrap the components
+  <>
+    <NameContext.Provider value={MyName}>
+     <Component1 />
+     <Component6 />
+   </NameContext.Provider>  
+   <button onClick={() => MyName === 'Shiva' ? SetName('shivani') : SetName('bye-bye')}>click Me</button>
+  </>
   );
 }
 
